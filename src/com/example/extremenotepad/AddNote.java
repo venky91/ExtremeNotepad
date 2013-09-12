@@ -2,13 +2,16 @@ package com.example.extremenotepad;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class AddNote extends Activity {
 
+	EditText enterText;
 	Button save;
 	Button cancel;
 	
@@ -17,6 +20,7 @@ public class AddNote extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_note);
 		
+		enterText = (EditText) findViewById(R.id.enterText);
 		save = (Button) findViewById(R.id.save);
 		cancel = (Button) findViewById(R.id.cancel);
 		
@@ -34,7 +38,9 @@ public class AddNote extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				
+				Intent myIntent = new Intent(AddNote.this, MainActivity.class);
+				startActivity(myIntent);
 				
 			}
 			
