@@ -8,9 +8,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
+    <Button
+        android:id="@+id/addNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignLeft="@+id/viewNotes"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/viewNotes"
+        android:layout_marginTop="90dp"
+        android:text="Add Note" />
+
+    <Button
+        android:id="@+id/viewNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addNote"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:text="View Notes" />
 
 </RelativeLayout>
