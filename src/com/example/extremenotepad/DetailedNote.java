@@ -2,6 +2,7 @@ package com.example.extremenotepad;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -51,7 +52,9 @@ public class DetailedNote extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
+				
+				Intent myIntent = new Intent(DetailedNote.this, MainActivity.class);
+				startActivity(myIntent);
 				
 			}
 			
