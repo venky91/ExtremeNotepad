@@ -87,8 +87,21 @@ public class DBAdapter extends SQLiteOpenHelper {
         	while ( cursor.moveToNext() );
         }
         
+        db.close();
         return aList;
         
+	}
+	
+	public void updateRecord( Note note ) {
+		
+		ContentValues values = new ContentValues();
+		values.put(KEY_TITLE, note.title);
+		values.put(KEY_NOTE, note.note);
+		
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.update(DATABASE_TABLE, values, KEY_ROWID + "=" + note.dbID, null);
+		db.close();
+		
 	}
 
 }

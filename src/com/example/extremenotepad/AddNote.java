@@ -27,7 +27,7 @@ public class AddNote extends Activity {
 		
 		Bundle myInput = getIntent().getExtras();
 		final String activity = myInput.getString("activity");
-		int noteId = myInput.getInt("id");
+		final int noteId = myInput.getInt("id");
 		
 		enterText = (EditText) findViewById(R.id.enterText);
 		save = (Button) findViewById(R.id.save);
@@ -91,6 +91,16 @@ public class AddNote extends Activity {
 						
 						// run update query on existing record
 						else {
+							
+							Note newNote = new Note(title, note);
+							newNote.setDBID(noteId);
+							
+							DBAdapter db = new DBAdapter(AddNote.this);
+							db.updateRecord(newNote);
+							db.close();
+							
+							Intent myIntent = new Intent(AddNote.this, ViewNotes.class);
+							startActivity(myIntent);
 							
 							
 						}
