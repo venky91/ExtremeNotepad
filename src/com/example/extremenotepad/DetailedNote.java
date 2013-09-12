@@ -3,6 +3,9 @@ package com.example.extremenotepad;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +14,9 @@ public class DetailedNote extends Activity {
 	int id;
 	
 	TextView viewText;
+	Button home;
+	Button edit;
+	Button delete;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,41 @@ public class DetailedNote extends Activity {
 			}
 		
 		}
+		
+		home = (Button) findViewById(R.id.home);
+		edit = (Button) findViewById(R.id.edit);
+		delete = (Button) findViewById(R.id.delete);
+		
+		home.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		edit.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		delete.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+		});
 		
  	}
 

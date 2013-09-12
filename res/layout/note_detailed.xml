@@ -17,4 +17,31 @@
         android:scrollbars="vertical"
         android:text="Hello" />
 
+    <Button
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/viewText"
+        android:layout_below="@+id/viewText"
+        android:layout_marginTop="53dp"
+        android:text="Home" />
+
+    <Button
+        android:id="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/home"
+        android:layout_alignBottom="@+id/home"
+        android:layout_centerHorizontal="true"
+        android:text="Edit" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edit"
+        android:layout_alignBottom="@+id/edit"
+        android:layout_alignRight="@+id/viewText"
+        android:text="Delete" />
+
 </RelativeLayout>
