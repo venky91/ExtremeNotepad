@@ -2,6 +2,8 @@ package com.example.extremenotepad;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -74,12 +76,37 @@ public class DetailedNote extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				
+				AlertDialog.Builder alertDialog = new AlertDialog.Builder(DetailedNote.this);
+				
+				// Setting Dialog Title
+				alertDialog.setTitle("Confirm Delete");
+				
+				// Setting Dialog Message
+				alertDialog.setMessage("Are you sure you want to delete this entry?");
+
+				alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						
+						DBAdapter db = new DBAdapter(DetailedNote.this);
+						db.deleteNote(id);
+						
+						Intent myIntent = new Intent(DetailedNote.this, ViewNotes.class);
+						startActivity(myIntent);
+						
+					}
+				});
+				
+				alertDialog.setNegativeButton("No", null);
+				
+				alertDialog.show();
 			}
 			
 			
 		});
+		
 		
  	}
 
