@@ -20,6 +20,7 @@ public class DetailedNote extends Activity {
 	Button home;
 	Button edit;
 	Button delete;
+	Note note;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class DetailedNote extends Activity {
 		
 		for (int i = 0; i < ViewNotes.aList.size(); i++ ) {
 			
-			Note note = ViewNotes.aList.get(i);
+			note = ViewNotes.aList.get(i);
 		
 			if ( note.dbID == id ) {
 				
@@ -66,7 +67,14 @@ public class DetailedNote extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				
+				Bundle b = new Bundle();
+				b.putString("activity", "DetailedNote");
+				b.putInt("id", note.dbID);
+				Intent myIntent = new Intent(DetailedNote.this, AddNote.class);
+				myIntent.putExtras(b);
+				startActivity(myIntent);
+				
 				
 			}
 			

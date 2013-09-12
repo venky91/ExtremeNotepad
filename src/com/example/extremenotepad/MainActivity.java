@@ -26,7 +26,12 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				
+				Bundle b = new Bundle();
+				b.putString("activity", "main");
+				b.putInt("id", (Integer) null);
+					
 				Intent myIntent = new Intent(MainActivity.this, AddNote.class);
+				myIntent.putExtras(b);
 				startActivity(myIntent);
 				
 			}
