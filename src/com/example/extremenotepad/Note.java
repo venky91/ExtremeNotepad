@@ -4,11 +4,17 @@ public class Note {
 	
 	String title;
 	String note;
+	int dbID;
 	
 	public Note( String title, String note ) {
 		
 		this.title = title;
 		this.note = note;
+		
+	}
+	
+	public Note() {
+		
 		
 	}
 	
@@ -21,6 +27,12 @@ public class Note {
 	public void setNote( String note ) {
 		
 		this.note = note;
+		
+	}
+	
+	public void setDBID( int id ) {
+		
+		this.dbID = id;
 		
 	}
 
