@@ -2,6 +2,8 @@ package com.example.extremenotepad;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -14,6 +16,8 @@ public class AddNote extends Activity {
 	EditText enterText;
 	Button save;
 	Button cancel;
+	String title;
+	String note;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +31,40 @@ public class AddNote extends Activity {
 		save.setOnClickListener(new OnClickListener() {
 
 			@Override
-			public void onClick(View v) {
+			public void onClick(View v) {	
 				
+				AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddNote.this);
+				
+				alertDialog.setTitle("Save Note");
+				alertDialog.setMessage("Enter a title for this note (required)");
+				
+				final EditText input = new EditText(AddNote.this);
+				alertDialog.setView(input);
+				
+				alertDialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						
+						title = input.getText().toString();
+						note = enterText.getText().toString();
+						
+						Note noteEntry = new Note( title, note );
+						
+						DBAdapter db = new DBAdapter(AddNote.this);
+						db.addNote(noteEntry);
+						db.close();
+						
+						Intent myIntent = new Intent(AddNote.this, MainActivity.class);
+						startActivity(myIntent);
+							
+					}
+				});
+				
+				alertDialog.setNegativeButton("Cancel", null);
+				
+				alertDialog.show();
+				   
 			}
 			
 		});
