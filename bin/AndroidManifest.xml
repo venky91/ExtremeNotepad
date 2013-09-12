@@ -30,6 +30,10 @@
             android:name="com.example.extremenotepad.ViewNotes"
             android:label="@string/title_activity_view_notes" >
         </activity>
+        <activity
+            android:name="com.example.extremenotepad.DetailedNote"
+            android:label="@string/title_activity_detailed_note" >
+        </activity>
     </application>
 
 </manifest>

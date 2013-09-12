@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_add_note">AddNote</string>
     <string name="title_activity_view_notes">ViewNotes</string>
+    <string name="title_activity_detailed_note">DetailedNote</string>
 
 </resources>
