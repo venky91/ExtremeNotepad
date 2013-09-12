@@ -1,15 +1,41 @@
 package com.example.extremenotepad;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ListActivity;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 
-public class ViewNotes extends Activity {
+public class ViewNotes extends ListActivity {
 
+	public static List<Note> aList;
+	ArrayList<String> list = new ArrayList<String>();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_notes);
+		
+		DBAdapter db = new DBAdapter(this);
+		
+		aList = db.getAllNotes();
+		
+		Note note;
+		
+		for ( int i = aList.size() - 1 ; i >= 0; i-- ) {
+			
+			note = aList.get(i);
+			String entry = Integer.toString(note.dbID) + ": " + note.title;
+			list.add(entry);
+			
+		} 
+		
+		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list));
+		
+		
 	}
 
 	@Override

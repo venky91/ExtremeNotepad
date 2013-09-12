@@ -37,7 +37,9 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				
+				Intent myIntent = new Intent(MainActivity.this, ViewNotes.class);
+				startActivity(myIntent);
 				
 			}
 			
