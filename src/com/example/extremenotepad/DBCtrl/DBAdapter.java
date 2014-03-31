@@ -1,7 +1,9 @@
-package com.example.extremenotepad;
+package com.example.extremenotepad.DBCtrl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.extremenotepad.Impl.Note;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -46,8 +48,8 @@ public class DBAdapter extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		
 		ContentValues values = new ContentValues();
-		values.put(KEY_TITLE, note.title);
-		values.put(KEY_NOTE, note.note);
+		values.put(KEY_TITLE, note.getTitle());
+		values.put(KEY_NOTE, note.getNote());
 		
 		db.insert(DATABASE_TABLE, null, values);
 		db.close();
@@ -62,9 +64,9 @@ public class DBAdapter extends SQLiteOpenHelper {
 		
 	}
 	
-	public List<Note> getAllNotes() {
+	public ArrayList<Note> getAllNotes() {
 		
-		List<Note> aList = new ArrayList<Note>();
+		ArrayList<Note> aList = new ArrayList<Note>();
 		
 		// Select All Query
         String selectQuery = "SELECT * FROM " + DATABASE_TABLE;
@@ -95,11 +97,11 @@ public class DBAdapter extends SQLiteOpenHelper {
 	public void updateRecord( Note note ) {
 		
 		ContentValues values = new ContentValues();
-		values.put(KEY_TITLE, note.title);
-		values.put(KEY_NOTE, note.note);
+		values.put(KEY_TITLE, note.getTitle());
+		values.put(KEY_NOTE, note.getNote());
 		
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.update(DATABASE_TABLE, values, KEY_ROWID + "=" + note.dbID, null);
+		db.update(DATABASE_TABLE, values, KEY_ROWID + "=" + note.getDBID(), null);
 		db.close();
 		
 	}

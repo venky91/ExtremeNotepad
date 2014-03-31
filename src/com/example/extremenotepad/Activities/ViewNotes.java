@@ -1,7 +1,12 @@
-package com.example.extremenotepad;
+package com.example.extremenotepad.Activities;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.extremenotepad.R;
+import com.example.extremenotepad.DBCtrl.DBAdapter;
+import com.example.extremenotepad.Helper.NoteHelper;
+import com.example.extremenotepad.Impl.Note;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -16,8 +21,7 @@ import android.widget.Toast;
 
 public class ViewNotes extends ListActivity implements OnClickListener {
 
-	public static List<Note> aList;
-	ArrayList<String> list = new ArrayList<String>();
+	ArrayList<String> listAdapter = new ArrayList<String>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,19 +30,19 @@ public class ViewNotes extends ListActivity implements OnClickListener {
 		
 		DBAdapter db = new DBAdapter(this);
 		
-		aList = db.getAllNotes();
-		
+		NoteHelper.noteList = db.getAllNotes();
+		int size = NoteHelper.noteList.size();
 		Note note;
 		
-		for ( int i = aList.size() - 1 ; i >= 0; i-- ) {
+		for ( int i = size - 1 ; i >= 0; i-- ) {
 			
-			note = aList.get(i);
-			String entry = Integer.toString(note.dbID) + ": " + note.title;
-			list.add(entry);
+			note = NoteHelper.noteList.get(i);
+			String entry = Integer.toString(note.getDBID()) + ": " + note.getTitle();
+			listAdapter.add(entry);
 			
 		} 
 		
-		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list));
+		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listAdapter));
 		
 		
 	}

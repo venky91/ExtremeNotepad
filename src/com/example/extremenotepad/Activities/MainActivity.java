@@ -1,4 +1,6 @@
-package com.example.extremenotepad;
+package com.example.extremenotepad.Activities;
+
+import com.example.extremenotepad.R;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -28,7 +30,7 @@ public class MainActivity extends Activity {
 				
 				Bundle b = new Bundle();
 				b.putString("activity", "main");
-				b.putInt("id", (Integer) null);
+				b.putInt("id", 0);
 					
 				Intent myIntent = new Intent(MainActivity.this, AddNote.class);
 				myIntent.putExtras(b);

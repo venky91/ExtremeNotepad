@@ -1,4 +1,9 @@
-package com.example.extremenotepad;
+package com.example.extremenotepad.Activities;
+
+import com.example.extremenotepad.R;
+import com.example.extremenotepad.DBCtrl.DBAdapter;
+import com.example.extremenotepad.Helper.NoteHelper;
+import com.example.extremenotepad.Impl.Note;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -31,17 +36,16 @@ public class DetailedNote extends Activity {
 		String key = myInput.getString("key");
 		
 		id = Integer.parseInt(key);
-		
 		viewText = (TextView) findViewById(R.id.viewText);
 		
 		
-		for (int i = 0; i < ViewNotes.aList.size(); i++ ) {
+		for (int i = 0; i < NoteHelper.noteList.size(); i++ ) {
 			
-			note = ViewNotes.aList.get(i);
+			note = NoteHelper.noteList.get(i);
 		
-			if ( note.dbID == id ) {
+			if ( note.getDBID() == id ) {
 				
-				viewText.setText(note.note);
+				viewText.setText(note.getNote());
 				break;
 			}
 		
@@ -70,7 +74,7 @@ public class DetailedNote extends Activity {
 				
 				Bundle b = new Bundle();
 				b.putString("activity", "DetailedNote");
-				b.putInt("id", note.dbID);
+				b.putInt("id", note.getDBID());
 				Intent myIntent = new Intent(DetailedNote.this, AddNote.class);
 				myIntent.putExtras(b);
 				startActivity(myIntent);
